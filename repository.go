@@ -900,6 +900,10 @@ func (r *Repository) resolveToCommitHash(h plumbing.Hash) (plumbing.Hash, error)
 	}
 }
 
+func (r *Repository) PrivateClone(ctx context.Context, o *CloneOptions) error {
+	return r.clone(ctx, o)
+}
+
 // Clone clones a remote repository
 func (r *Repository) clone(ctx context.Context, o *CloneOptions) error {
 	if err := o.Validate(); err != nil {
